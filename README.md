@@ -18,15 +18,6 @@ Tech Stack
 
 No heavy frameworks are used. The project is lightweight and easy to maintain.
 
-Project Structure
-micromouldsandtools/
-│
-├── index.html        # Main landing page
-├── css/              # Stylesheets
-├── js/               # JavaScript files
-├── images/           # Website images and assets
-└── README.md         # Project documentation
-
 How to Run the Project
   Clone the repository:
   git clone https://github.com/akashnair14/micromouldsandtools.git
