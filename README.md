@@ -1,16 +1,47 @@
-# React + Vite
+Micro Moulds and Tools Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for the Micro Moulds and Tools company website.
+The website is designed to showcase the company profile, services, products, and contact information in a simple and professional way.
 
-Currently, two official plugins are available:
+About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Micro Moulds and Tools is an industrial business focused on precision moulds and tools manufacturing.
+This website helps the business establish an online presence and provides customers with clear information about:
+  Company overview
+  Products and services
+  Contact details
 
-## React Compiler
+Tech Stack
+  HTML
+  CSS
+  JavaScript
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+No heavy frameworks are used. The project is lightweight and easy to maintain.
 
-## Expanding the ESLint configuration
+Project Structure
+micromouldsandtools/
+│
+├── index.html        # Main landing page
+├── css/              # Stylesheets
+├── js/               # JavaScript files
+├── images/           # Website images and assets
+└── README.md         # Project documentation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+How to Run the Project
+  Clone the repository:
+  git clone https://github.com/akashnair14/micromouldsandtools.git
+  Open the project folder.
+  Open index.html in any modern web browser.
+  That’s it. No setup, no build process.
+
+Features
+  Clean and responsive layout
+  Simple navigation
+  Business-focused content
+  Fast loading and lightweight
+
+Future Improvements
+  Add mobile-first optimizations
+  Improve SEO
+  Add contact form functionality
+  Backend integration if required
