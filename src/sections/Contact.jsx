@@ -98,8 +98,13 @@ export default function Contact() {
               <div className="flex items-start gap-3 text-sm text-slate-700">
                 <MapPin size={18} className="text-slate-900 shrink-0 mt-0.5" />
                 <div className="leading-relaxed">
-                  <strong className="text-slate-900 font-semibold block">Micro Moulds & Tools</strong>
-                  <span>Gala No. A8, Survey No. 13/11, Shakti Industrial Estate, Ringanwada, Varkund, Nani Daman, Dadra & Nagar Haveli and Daman & Diu – 396210, India</span>
+                  <div className="flex items-center gap-2">
+                    <strong className="text-slate-900 font-semibold block">Micro Moulds & Tools</strong>
+                    <span className="text-[10px] bg-slate-200 text-slate-800 font-mono px-1.5 py-0.5 rounded font-semibold">
+                      GSTIN: {COMPANY_LINKS.gstin}
+                    </span>
+                  </div>
+                  <span>Gala No. A8, Survey No. 13/11, Shakti Industrial Estate, Ringanwada, Somnath, Nani Daman, Dadra & Nagar Haveli and Daman & Diu – 396210, India</span>
                 </div>
               </div>
 

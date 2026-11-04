@@ -12,10 +12,33 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
           {/* Brand & Verification */}
           <div className="md:col-span-5 space-y-3">
-            <h4 className="text-white font-semibold text-base">Micro Moulds & Tools</h4>
+            <div className="flex items-center gap-3">
+              <img
+                src="/images/mmt-emblem.png"
+                alt="Micro Moulds & Tools Monogram"
+                className="h-10 w-auto bg-white p-1 rounded border border-slate-700 object-contain shadow-sm"
+                width="48"
+                height="36"
+                loading="lazy"
+              />
+              <div>
+                <h4 className="text-white font-semibold text-base leading-tight">Micro Moulds & Tools</h4>
+                <p className="text-emerald-400 font-mono text-[11px] tracking-wider font-semibold">
+                  SPECIALIST IN BALL PEN MOULD
+                </p>
+              </div>
+            </div>
+
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Precision manufacturers of injection moulds for ball pens, side-core tooling, unscrewing moulds, and CNC spark erosion (EDM) job works. Founded by Mr. Biju Nair in Daman, India.
+              All types of Mould Making, Mould Maintenance and Spark Erosion (EDM) Works. Precision engineered toolroom serving stationery and industrial leaders across India.
             </p>
+
+            <div className="flex flex-wrap items-center gap-2 text-xs pt-1">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[11px]">
+                <span className="text-slate-500">GSTIN:</span>
+                <span className="text-white font-medium">{COMPANY_LINKS.gstin}</span>
+              </span>
+            </div>
 
             <div className="pt-2 flex flex-wrap gap-2 text-xs">
               <a

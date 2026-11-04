@@ -19,6 +19,10 @@ export default function About() {
                 <ShieldCheck size={16} className="text-emerald-700" />
                 <span>Verified Toolroom Supplier</span>
               </div>
+              <div className="bg-white p-2 rounded border border-slate-200 font-mono text-[11px] text-slate-600">
+                <div>GSTIN: <span className="font-semibold text-slate-900">{COMPANY_LINKS.gstin}</span></div>
+                <div className="text-[10px] text-slate-500 mt-0.5">Specialist in Ball Pen Mould</div>
+              </div>
               <p>Registered and verified on major national B2B industrial trade networks:</p>
               <div className="flex flex-col gap-2 pt-1">
                 <a
