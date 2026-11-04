@@ -75,7 +75,7 @@ export default function Navbar() {
               Micro Moulds & Tools
             </span>
             <span className="text-xs text-slate-500 font-normal whitespace-nowrap">
-              Precision Toolroom & CNC Spark Erosion • Daman
+              Precision Toolroom & CNC Spark Erosion
             </span>
           </div>
         </Link>
