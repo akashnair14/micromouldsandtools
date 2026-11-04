@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -14,19 +14,30 @@ import FAQ from "./sections/FAQ";
 import Contact from "./sections/Contact";
 import Careers from "./sections/Careers";
 
-export default function App() {
-  // Scroll to hash on initial load if any
-  useEffect(() => {
-    if (window.location.hash) {
-      const id = window.location.hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
+// Automatically scrolls to top on route change (/works, /careers) unless a hash anchor is targeted
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
 
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 50);
+      }
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
+
+export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white text-slate-900 font-sans antialiased">
+      <ScrollToTop />
+      <div className="min-h-screen bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
         <Navbar />
         <Routes>
           <Route
