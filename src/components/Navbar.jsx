@@ -62,19 +62,19 @@ export default function Navbar() {
       {/* Main Navbar */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
         {/* Brand identity: clean, professional, established */}
-        <Link to="/" className="flex items-center gap-3.5 cursor-pointer group">
+        <Link to="/" className="flex items-center gap-3.5 cursor-pointer group shrink-0">
           <img
             src="/images/mmt-emblem.png"
             alt="Micro Moulds & Tools"
-            className="h-11 w-auto object-contain"
+            className="h-11 w-auto object-contain shrink-0"
             width="44"
             height="36"
           />
           <div className="leading-tight">
-            <span className="text-lg font-bold tracking-tight text-slate-900 block">
+            <span className="text-lg font-bold tracking-tight text-slate-900 block whitespace-nowrap">
               Micro Moulds & Tools
             </span>
-            <span className="text-xs text-slate-500 font-normal">
+            <span className="text-xs text-slate-500 font-normal whitespace-nowrap">
               Precision Toolroom & CNC Spark Erosion • Daman
             </span>
           </div>
