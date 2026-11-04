@@ -70,50 +70,89 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column: Authentic Company Signboard Card */}
+          {/* Right Column: Interactive Toolroom Engineering Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="lg:col-span-5"
           >
-            <div className="bg-white rounded-2xl border-2 border-[#0f3460] shadow-xl overflow-hidden p-6 relative">
-              <div className="text-center pb-5 border-b border-slate-100">
-                <img
-                  src="/images/mmt-logo.png"
-                  alt="Micro Moulds and Tools Official Signboard Logo"
-                  className="w-full max-w-sm mx-auto h-auto object-contain"
-                />
+            <div className="bg-slate-900 text-white rounded-2xl shadow-2xl p-6 sm:p-7 border border-slate-800 relative overflow-hidden">
+              {/* Subtle accent glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header: Core Specialization */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-xs uppercase tracking-widest font-mono text-slate-400">
+                    Live Toolroom Specifications
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">
+                  Daman Facility
+                </span>
               </div>
 
-              <div className="pt-5 space-y-3">
-                <div className="bg-blue-50/80 rounded-lg p-3 text-center border border-blue-100">
-                  <span className="text-xs font-bold text-[#0f3460] uppercase tracking-wider block">
-                    Certified Manufacturing Scope
+              {/* Engineering Scope Highlight */}
+              <div className="my-5 p-4 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                <div className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider mb-1">
+                  Primary Domain
+                </div>
+                <div className="text-lg font-bold text-white tracking-tight">
+                  Ball Pen Moulds & Spark Erosion (EDM)
+                </div>
+                <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  Specialized in multi-cavity pen barrels, side-action clip moulds, and automatic unscrewing threaded caps.
+                </p>
+              </div>
+
+              {/* 4 Precision Metric Cells */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
+                  <span className="text-slate-400 block text-[10px] uppercase font-mono tracking-wider">
+                    Machining Tolerance
                   </span>
-                  <p className="text-xs text-slate-700 mt-1 font-medium">
-                    All Type of Mould Making, Mould Maintenance & Spark Erosion Works
-                  </p>
+                  <div className="text-xl font-bold text-emerald-400 mt-0.5">±0.005 mm</div>
+                  <span className="text-[10px] text-slate-500">Sub-micron spark erosion</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs pt-1">
-                  <div className="p-2.5 rounded bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 block text-[10px] uppercase font-mono">Machining Limit</span>
-                    <strong className="text-slate-900 text-sm">±0.005 mm</strong>
-                  </div>
-                  <div className="p-2.5 rounded bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 block text-[10px] uppercase font-mono">Cavity Capacity</span>
-                    <strong className="text-slate-900 text-sm">Up to 64 Cavities</strong>
-                  </div>
-                  <div className="p-2.5 rounded bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 block text-[10px] uppercase font-mono">Steels Formed</span>
-                    <strong className="text-slate-900 text-sm">Stavax ESR / H13</strong>
-                  </div>
-                  <div className="p-2.5 rounded bg-slate-50 border border-slate-100">
-                    <span className="text-slate-400 block text-[10px] uppercase font-mono">Master Experience</span>
-                    <strong className="text-slate-900 text-sm">25+ Years Lead</strong>
-                  </div>
+                <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
+                  <span className="text-slate-400 block text-[10px] uppercase font-mono tracking-wider">
+                    Cavitation
+                  </span>
+                  <div className="text-xl font-bold text-white mt-0.5">Up to 64</div>
+                  <span className="text-[10px] text-slate-500">Balanced runner layouts</span>
                 </div>
+
+                <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
+                  <span className="text-slate-400 block text-[10px] uppercase font-mono tracking-wider">
+                    Steels Processed
+                  </span>
+                  <div className="text-sm font-bold text-slate-200 mt-1">Stavax ESR / H13</div>
+                  <span className="text-[10px] text-slate-500">Hardened AISI & 2316</span>
+                </div>
+
+                <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/50">
+                  <span className="text-slate-400 block text-[10px] uppercase font-mono tracking-wider">
+                    Lead Expertise
+                  </span>
+                  <div className="text-sm font-bold text-slate-200 mt-1">25+ Years</div>
+                  <span className="text-[10px] text-slate-500">Master toolmaker lead</span>
+                </div>
+              </div>
+
+              {/* Capabilities checklist footer */}
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-400 font-bold">✓</span> CNC Spark Erosion
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-400 font-bold">✓</span> 24h Mould Repair
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-400 font-bold">✓</span> Trial Sampling
+                </span>
               </div>
             </div>
           </motion.div>
