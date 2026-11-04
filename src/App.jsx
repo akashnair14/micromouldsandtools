@@ -5,8 +5,12 @@ import Footer from "./components/Footer";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Services from "./sections/Services";
-import Team from "../public/Team";
+import Machinery from "./sections/Machinery";
 import Gallery from "./sections/Gallery";
+import WorksPage from "./sections/WorksPage";
+import Testimonials from "./sections/Testimonials";
+import Team from "./sections/Team";
+import FAQ from "./sections/FAQ";
 import Contact from "./sections/Contact";
 import Careers from "./sections/Careers";
 
@@ -22,34 +26,43 @@ export default function App() {
 
   return (
     <Router>
-      <div className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+      <div className="min-h-screen bg-white text-slate-900 font-sans antialiased">
+        <Navbar />
         <Routes>
           <Route
             path="/"
             element={
-              <>
-                <Navbar />
+              <main>
                 <Hero />
                 <About />
                 <Services />
-                <Team />
+                <Machinery />
                 <Gallery />
+                <Testimonials />
+                <Team />
+                <FAQ />
                 <Contact />
-                <Footer />
-              </>
+              </main>
+            }
+          />
+          <Route
+            path="/works"
+            element={
+              <main>
+                <WorksPage />
+              </main>
             }
           />
           <Route
             path="/careers"
             element={
-              <>
-                <Navbar />
+              <main>
                 <Careers />
-                <Footer />
-              </>
+              </main>
             }
           />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

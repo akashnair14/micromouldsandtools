@@ -1,30 +1,207 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
+
 export default function Careers() {
-    return (
-        <section className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white p-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8">Join Our Team</h1>
-            <p className="text-lg md:text-xl mb-8 max-w-2xl text-center">
-                We are always looking for talented individuals to join Micro Moulds & Tools. Apply below to become part of our growing team.
-            </p>
-            <form className="w-full max-w-xl bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg space-y-4">
-                <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none"
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none"
-                />
-                <textarea
-                    rows="5"
-                    placeholder="Why do you want to join?"
-                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none resize-none"
-                />
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                    Submit Application
-                </button>
-            </form>
-        </section>
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    role: "EDM Spark Erosion Operator",
+    experience: "2-5 Years",
+    message: "",
+  });
+
+  const jobs = [
+    {
+      title: "EDM Spark Erosion Operator",
+      type: "Full Time",
+      location: "Daman, India",
+      experience: "2+ Years CNC/Conventional EDM",
+      details: "Operating sinker/spark erosion machines, electrode setup, and holding tight tolerances on multi-cavity pen moulds.",
+    },
+    {
+      title: "Tool & Die Maker",
+      type: "Full Time",
+      location: "Daman, India",
+      experience: "3+ Years Injection Moulds",
+      details: "Bench assembly, core & cavity fitment, blue-matching of parting lines, and mould servicing.",
+    },
+    {
+      title: "Surface Grinding Technician",
+      type: "Full Time",
+      location: "Daman, India",
+      experience: "1+ Years Toolroom Experience",
+      details: "Precision surface grinding of core plates, ejector pins, and general toolroom finishing.",
+    },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Job Application: ${formData.role} - ${formData.fullName}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nRole: ${formData.role}\nExperience: ${formData.experience}\n\nNotes:\n${formData.message}`
     );
+    window.location.href = `mailto:microtool71@gmail.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  };
+
+  return (
+    <section className="py-16 sm:py-24 bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-slate-900 mb-8"
+        >
+          <ArrowLeft size={14} /> Back to Home
+        </Link>
+
+        <div className="mb-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">
+            Careers
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
+            Join Micro Moulds & Tools
+          </h1>
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            We are looking for skilled toolmakers and EDM operators to join our workshop in Daman.
+          </p>
+        </div>
+
+        {/* Openings list */}
+        <div className="space-y-4 mb-16">
+          <h2 className="text-base font-semibold text-slate-900 mb-2">Current Openings</h2>
+          {jobs.map((job, idx) => (
+            <div
+              key={idx}
+              className="p-5 rounded-lg border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+            >
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900">{job.title}</h3>
+                <div className="text-xs text-slate-500 mt-0.5 space-x-2">
+                  <span>{job.type}</span>
+                  <span>•</span>
+                  <span>{job.location}</span>
+                  <span>•</span>
+                  <span>{job.experience}</span>
+                </div>
+                <p className="text-xs text-slate-600 mt-2">{job.details}</p>
+              </div>
+              <button
+                onClick={() => {
+                  setFormData((prev) => ({ ...prev, role: job.title }));
+                  document.getElementById("apply-box")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="shrink-0 px-4 py-2 text-xs font-medium text-slate-700 hover:text-slate-900 bg-white border border-slate-300 rounded-md transition"
+              >
+                Apply
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Application Form */}
+        <div id="apply-box" className="p-7 rounded-lg border border-slate-200 bg-white">
+          <h3 className="text-base font-semibold text-slate-900 mb-1">Apply for a Position</h3>
+          <p className="text-xs text-slate-500 mb-6">
+            Applying for: <strong className="text-slate-800">{formData.role}</strong>
+          </p>
+
+          {submitted ? (
+            <div className="p-4 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-3 text-sm">
+              <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
+              <span>Your email client was opened. Please attach your CV/resume and send to complete.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Full Name *</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  placeholder="Your Name"
+                  className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Email *</label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="email@example.com"
+                    className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Phone *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="+91 00000 00000"
+                    className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Position</label>
+                  <select
+                    value={formData.role}
+                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none bg-white"
+                  >
+                    <option value="EDM Spark Erosion Operator">EDM Spark Erosion Operator</option>
+                    <option value="Tool & Die Maker">Tool & Die Maker</option>
+                    <option value="Surface Grinding Technician">Surface Grinding Technician</option>
+                    <option value="General Application">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Experience</label>
+                  <select
+                    value={formData.experience}
+                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none bg-white"
+                  >
+                    <option value="Fresher / < 1 Year">&lt; 1 Year</option>
+                    <option value="1 - 3 Years">1 - 3 Years</option>
+                    <option value="3 - 5 Years">3 - 5 Years</option>
+                    <option value="5+ Years">5+ Years</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Summary / Work History</label>
+                <textarea
+                  rows="3"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Mention previous toolroom experience, machines operated..."
+                  className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-md transition"
+              >
+                Submit Application via Email
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
 }

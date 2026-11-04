@@ -1,61 +1,91 @@
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ShieldCheck, ExternalLink } from "lucide-react";
+import { COMPANY_LINKS } from "../constants/links";
 
 export default function About() {
-    const values = [
-        { title: "Precision", desc: "Micron-level accuracy in every component" },
-        { title: "Reliability", desc: "Consistent quality and timely delivery" },
-        { title: "Partnership", desc: "Long-term relationships built on trust" },
-        { title: "Innovation", desc: "Continuous improvement and modernization" },
-    ];
+  return (
+    <section id="about" className="py-20 bg-white border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid md:grid-cols-12 gap-10 items-start">
+          <div className="md:col-span-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">
+              About Our Company
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
+              Focused on accuracy, longevity, and reliable lead times.
+            </h2>
 
-    return (
-        <section id="about" className="py-20 bg-white dark:bg-gray-900">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+            <div className="mt-6 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-3 text-xs text-slate-600">
+              <div className="flex items-center gap-2 font-medium text-slate-900">
+                <ShieldCheck size={16} className="text-emerald-600" />
+                <span>Verified Toolroom Supplier</span>
+              </div>
+              <p>Registered and verified on major national B2B industrial trade networks:</p>
+              <div className="flex flex-col gap-1.5 pt-1">
+                <a
+                  href={COMPANY_LINKS.indiamart}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-900 font-medium"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12">
-                        About Us
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6 text-gray-700 dark:text-gray-300">
-                            <p>
-                                Founded with a vision for precision and excellence, Micro Moulds & Tools has been a trusted name in the injection moulding industry.
-                            </p>
-                            <p>
-                                Our founder's dedication to quality and attention to detail has built lasting relationships with clients who value reliability and craftsmanship.
-                            </p>
-                        </div>
-                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Values</h3>
-                            <ul className="space-y-4">
-                                {values.map((value, idx) => (
-                                    <motion.li
-                                        key={idx}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        className="flex items-start gap-3"
-                                    >
-                                        <div className="bg-blue-600 rounded-full p-1 mt-1">
-                                            <ChevronRight size={16} className="text-white" />
-                                        </div>
-                                        <div>
-                                            <strong className="text-gray-900 dark:text-white">{value.title}:</strong>{" "}
-                                            <span className="text-gray-700 dark:text-gray-300">{value.desc}</span>
-                                        </div>
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </motion.div>
+                  <span>&bull; View Profile on IndiaMART</span>
+                  <ExternalLink size={11} />
+                </a>
+                <a
+                  href={COMPANY_LINKS.tradeindia}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-blue-700 hover:text-blue-900 font-medium"
+                >
+                  <span>&bull; View Profile on TradeIndia</span>
+                  <ExternalLink size={11} />
+                </a>
+                <a
+                  href={COMPANY_LINKS.justdial}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-amber-700 hover:text-amber-900 font-medium"
+                >
+                  <span>&bull; View Profile on Justdial Daman</span>
+                  <ExternalLink size={11} />
+                </a>
+              </div>
             </div>
-        </section>
-    );
+          </div>
+
+          <div className="md:col-span-8 space-y-5 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+            <p>
+              Founded and directed by master toolmaker <strong className="text-slate-900 font-semibold">Mr. Biju Nair</strong>, Micro Moulds & Tools has been a trusted supplier to the Indian writing instrument and plastics industry from Shakti Industrial Estate, Daman.
+            </p>
+            <p>
+              Our facility combines modern precision machinery (CNC spark erosion EDM, precision turning, surface grinders) with hands-on bench assembly, blue-matching, and trial sampling. We specialize in complex tooling mechanisms that standard toolrooms avoid — notably <strong className="text-slate-900 font-semibold">side-core puller moulds</strong> and <strong className="text-slate-900 font-semibold">automatic unscrewing moulds</strong> for threaded closures and caps.
+            </p>
+            <p>
+              With extensive experience serving plastics manufacturing units across Daman, Silvassa, Vapi, and Gujarat, we also provide rapid breakdown maintenance, parting-line laser welding, and emergency replacement core pins.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1">High-Grade Steels</h3>
+                <p className="text-xs text-slate-500 leading-normal">
+                  Hardened AISI H13, Stavax ESR, and 2316 for extreme polish and corrosion resistance.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1">Side-Core & Unscrewing</h3>
+                <p className="text-xs text-slate-500 leading-normal">
+                  Expertise in complex threaded geometries, collapsible cores, and side-lifters.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900 mb-1">Job Work & Maintenance</h3>
+                <p className="text-xs text-slate-500 leading-normal">
+                  Dedicated CNC spark erosion (EDM) job work and 24-48h parting-line repair.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -1,133 +1,136 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [theme, setTheme] = useState("light");
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    const navItems = ["Home", "About", "Services", "Team", "Gallery", "Contact"];
-    const location = useLocation();
-    const navigate = useNavigate();
+  const links = [
+    { label: "About", id: "about" },
+    { label: "Capabilities", id: "services" },
+    { label: "Machinery", id: "machinery" },
+    { label: "Works", id: "works-preview" },
+    { label: "Testimonials", id: "testimonials" },
+    { label: "Team", id: "team" },
+    { label: "FAQ", id: "faq" },
+    { label: "Contact", id: "contact" },
+  ];
 
-    // Scroll detection
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  const handleNav = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
 
-    // Initial theme (system preference or saved)
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) {
-            setTheme(savedTheme);
-            document.documentElement.classList.toggle("dark", savedTheme === "dark");
-        } else {
-            const systemPref = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            setTheme(systemPref ? "dark" : "light");
-            document.documentElement.classList.toggle("dark", systemPref);
-        }
-    }, []);
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        {/* Brand */}
+        <Link to="/" className="text-left cursor-pointer group">
+          <span className="text-base font-semibold text-slate-900 tracking-tight block">
+            Micro Moulds & Tools
+          </span>
+          <span className="text-xs text-slate-500 font-normal block">
+            Precision Tooling • Daman, India
+          </span>
+        </Link>
 
-    // Update theme on state change
-    useEffect(() => {
-        document.documentElement.classList.toggle("dark", theme === "dark");
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+        {/* Desktop Links */}
+        <nav className="hidden md:flex items-center gap-4.5 text-sm font-medium text-slate-600">
+          {links.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className="hover:text-slate-900 transition-colors cursor-pointer text-xs lg:text-sm"
+            >
+              {link.label}
+            </button>
+          ))}
 
-    const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+          <Link
+            to="/works"
+            className={`transition-colors px-2 py-0.5 rounded-md text-xs lg:text-sm ${
+              location.pathname === "/works"
+                ? "text-blue-600 bg-blue-50 font-semibold"
+                : "text-blue-600 hover:text-blue-700 hover:bg-blue-50/50 font-medium"
+            }`}
+          >
+            All Works &rarr;
+          </Link>
 
-    const scrollToSection = (section) => {
-        if (location.pathname !== "/") {
-            navigate("/", { replace: false });
-            setTimeout(() => {
-                const el = document.getElementById(section.toLowerCase());
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-            }, 100);
-        } else {
-            const el = document.getElementById(section.toLowerCase());
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-        }
-        setIsOpen(false);
-    };
+          <Link
+            to="/careers"
+            className={`transition-colors text-xs lg:text-sm ${
+              location.pathname === "/careers"
+                ? "text-slate-900 font-semibold"
+                : "hover:text-slate-900"
+            }`}
+          >
+            Careers
+          </Link>
 
-    return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white dark:bg-gray-800 shadow-lg py-4" : "bg-transparent py-6"
-                }`}
+          <button
+            onClick={() => handleNav("contact")}
+            className="ml-1 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
+          >
+            Get a Quote
+          </button>
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation"
+          className="md:hidden p-2 text-slate-600 hover:text-slate-900"
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="text-2xl font-bold text-blue-600 cursor-pointer"
-                    onClick={() => scrollToSection("Home")}
-                >
-                    Micro Moulds & Tools
-                </motion.div>
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
 
-                <div className="hidden md:flex space-x-8 items-center">
-                    {navItems.map((item) => (
-                        <motion.button
-                            key={item}
-                            whileHover={{ scale: 1.1, color: "#2563eb" }}
-                            onClick={() => scrollToSection(item)}
-                            className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
-                        >
-                            {item}
-                        </motion.button>
-                    ))}
-
-                    <Link
-                        to="/careers"
-                        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
-                    >
-                        Careers
-                    </Link>
-
-                    {/* Toggle */}
-                    <button onClick={toggleTheme} className="ml-4 flex items-center gap-1">
-                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                    </button>
-                </div>
-
-                <button className="md:hidden text-gray-700 dark:text-gray-200" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="md:hidden mt-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4"
-                >
-                    {navItems.map((item) => (
-                        <button
-                            key={item}
-                            onClick={() => scrollToSection(item)}
-                            className="block w-full text-left py-3 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition-colors"
-                        >
-                            {item}
-                        </button>
-                    ))}
-
-                    <Link
-                        to="/careers"
-                        className="block w-full text-left py-3 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition-colors"
-                    >
-                        Careers
-                    </Link>
-
-                    <button onClick={toggleTheme} className="mt-4 flex items-center gap-1">
-                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />} Toggle Theme
-                    </button>
-                </motion.div>
-            )}
-        </motion.nav>
-    );
+      {/* Mobile nav */}
+      {isOpen && (
+        <div className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-2">
+          {links.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
+            >
+              {link.label}
+            </button>
+          ))}
+          <Link
+            to="/works"
+            onClick={() => setIsOpen(false)}
+            className="block w-full text-left py-2 text-sm font-semibold text-blue-600 hover:text-blue-700"
+          >
+            All Works Showcase &rarr;
+          </Link>
+          <Link
+            to="/careers"
+            onClick={() => setIsOpen(false)}
+            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
+          >
+            Careers
+          </Link>
+          <div className="pt-2">
+            <button
+              onClick={() => handleNav("contact")}
+              className="w-full py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 rounded-md"
+            >
+              Get a Quote
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
