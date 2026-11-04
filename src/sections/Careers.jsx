@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2, Send } from "lucide-react";
+import { COMPANY_LINKS } from "../constants/links";
 
 export default function Careers() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -37,14 +39,41 @@ export default function Careers() {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Job Application: ${formData.role} - ${formData.fullName}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nRole: ${formData.role}\nExperience: ${formData.experience}\n\nNotes:\n${formData.message}`
-    );
-    window.location.href = `mailto:microtool71@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setSubmitting(true);
+
+    try {
+      // 1. Log directly to Google Sheets under 'Careers' sheet
+      await fetch(COMPANY_LINKS.googleSheetsEndpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "career",
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          role: formData.role,
+          experience: formData.experience,
+          message: formData.message,
+        }),
+      });
+
+      // 2. Open email client with details so candidate can attach resume
+      const subject = encodeURIComponent(`Job Application: ${formData.role} - ${formData.fullName}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nRole: ${formData.role}\nExperience: ${formData.experience}\n\nCandidate Notes:\n${formData.message}`
+      );
+      window.location.href = `mailto:microtool71@gmail.com?subject=${subject}&body=${body}`;
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Career submission error:", err);
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -102,7 +131,7 @@ export default function Careers() {
         </div>
 
         {/* Application Form */}
-        <div id="apply-box" className="p-7 rounded-lg border border-slate-200 bg-white">
+        <div id="apply-box" className="p-7 rounded-lg border border-slate-200 bg-white shadow-2xs">
           <h3 className="text-base font-semibold text-slate-900 mb-1">Apply for a Position</h3>
           <p className="text-xs text-slate-500 mb-6">
             Applying for: <strong className="text-slate-800">{formData.role}</strong>
@@ -111,13 +140,14 @@ export default function Careers() {
           {submitted ? (
             <div className="p-4 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-3 text-sm">
               <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
-              <span>Your email client was opened. Please attach your CV/resume and send to complete.</span>
+              <span>Application logged to our hiring database. Please attach your CV/resume in your email window to complete.</span>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Full Name *</label>
+                <label htmlFor="career_name" className="block text-xs font-medium text-slate-700 mb-1">Full Name *</label>
                 <input
+                  id="career_name"
                   type="text"
                   required
                   value={formData.fullName}
@@ -129,8 +159,9 @@ export default function Careers() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Email *</label>
+                  <label htmlFor="career_email" className="block text-xs font-medium text-slate-700 mb-1">Email *</label>
                   <input
+                    id="career_email"
                     type="email"
                     required
                     value={formData.email}
@@ -140,8 +171,9 @@ export default function Careers() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Phone *</label>
+                  <label htmlFor="career_phone" className="block text-xs font-medium text-slate-700 mb-1">Phone *</label>
                   <input
+                    id="career_phone"
                     type="tel"
                     required
                     value={formData.phone}
@@ -154,8 +186,9 @@ export default function Careers() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Position</label>
+                  <label htmlFor="career_role" className="block text-xs font-medium text-slate-700 mb-1">Position</label>
                   <select
+                    id="career_role"
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                     className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none bg-white"
@@ -167,8 +200,9 @@ export default function Careers() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Experience</label>
+                  <label htmlFor="career_exp" className="block text-xs font-medium text-slate-700 mb-1">Experience</label>
                   <select
+                    id="career_exp"
                     value={formData.experience}
                     onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                     className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-sm focus:border-slate-900 focus:outline-none bg-white"
@@ -182,8 +216,9 @@ export default function Careers() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Summary / Work History</label>
+                <label htmlFor="career_message" className="block text-xs font-medium text-slate-700 mb-1">Summary / Work History</label>
                 <textarea
+                  id="career_message"
                   rows="3"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -194,9 +229,20 @@ export default function Careers() {
 
               <button
                 type="submit"
-                className="w-full py-2.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-md transition"
+                disabled={submitting}
+                className="w-full py-2.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                Submit Application via Email
+                {submitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Logging Application...
+                  </>
+                ) : (
+                  <>
+                    <Send size={15} />
+                    Submit Application & Log
+                  </>
+                )}
               </button>
             </form>
           )}

@@ -6,4 +6,5 @@ export const COMPANY_LINKS = {
   googleMaps: "https://maps.google.com/?cid=9873489178496412486", // Micro Moulds and Tools, Ringanwada, Daman
   phone: "+919377004215",
   email: "microtool71@gmail.com",
+  googleSheetsEndpoint: import.meta.env.VITE_GOOGLE_SHEETS_URL || "https://script.google.com/macros/s/AKfycbx20HqoHyGQZkwYXa69ndxFWbtGNpseS0WPD0sDuCRNXoR1PAX258KSTTxoB4hBhFrUVg/exec",
 };

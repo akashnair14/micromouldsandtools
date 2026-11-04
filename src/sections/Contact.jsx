@@ -13,18 +13,39 @@ export default function Contact() {
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_nr7zvcq";
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_zagdxle";
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "A-BrXuwgItHkMo7Tu";
+    const sheetEndpoint = COMPANY_LINKS.googleSheetsEndpoint;
+
+    const formData = new FormData(formRef.current);
+    const formValues = {
+      formType: "inquiry",
+      name: formData.get("from_name") || "",
+      email: formData.get("from_email") || "",
+      message: formData.get("message") || "",
+    };
 
     setStatus({ state: "submitting", message: "" });
 
     try {
-      await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      // 1. Send Email via EmailJS
+      const emailPromise = emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+
+      // 2. Concurrently append row to Google Sheets
+      const sheetPromise = fetch(sheetEndpoint, {
+        method: "POST",
+        mode: "no-cors", // Google Apps Script returns 302 redirect; no-cors sends payload reliably
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formValues),
+      });
+
+      await Promise.allSettled([emailPromise, sheetPromise]);
+
       setStatus({
         state: "success",
-        message: "Thank you. Your RFQ has been received. Our team will review your specifications and respond promptly.",
+        message: "Thank you. Your RFQ has been received and logged. Our team will review your specifications and respond promptly.",
       });
       formRef.current.reset();
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      console.error("Submission Error:", error);
       setStatus({
         state: "error",
         message: "Failed to send message online. Please call Mr. Biju Nair directly at +91 9377004215.",
@@ -159,7 +180,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Form with automatic Google Sheet + Email submission */}
           <div className="lg:col-span-7 bg-white p-7 sm:p-8 rounded-lg border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-lg font-semibold text-slate-900">
