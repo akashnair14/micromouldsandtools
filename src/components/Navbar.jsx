@@ -33,10 +33,10 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       {/* Sleek, minimal Top Info Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-1 px-4 sm:px-6">
+      <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between text-[11px]">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-amber-400 uppercase tracking-wide">
+            <span className="font-semibold text-slate-100 uppercase tracking-wide">
               {COMPANY_LINKS.tagline}
             </span>
             <span className="hidden sm:inline text-slate-500">•</span>
@@ -50,9 +50,9 @@ export default function Navbar() {
             <span className="hidden md:inline text-slate-600">|</span>
             <a
               href={`tel:${COMPANY_LINKS.phone}`}
-              className="text-slate-200 hover:text-white flex items-center gap-1 font-sans font-medium transition"
+              className="text-slate-200 hover:text-white flex items-center gap-1.5 font-sans font-medium transition"
             >
-              <Phone size={11} className="text-amber-400" />
+              <Phone size={11} className="text-slate-400" />
               <span>{COMPANY_LINKS.rawPhone}</span>
             </a>
           </div>
@@ -60,33 +60,33 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand identity: clean, minimal, non-crammed */}
-        <Link to="/" className="flex items-center gap-3 cursor-pointer group">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        {/* Brand identity: clean, professional, established */}
+        <Link to="/" className="flex items-center gap-3.5 cursor-pointer group">
           <img
             src="/images/mmt-emblem.png"
             alt="Micro Moulds & Tools"
-            className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
-            width="42"
-            height="32"
+            className="h-11 w-auto object-contain"
+            width="44"
+            height="36"
           />
           <div className="leading-tight">
-            <span className="text-base sm:text-lg font-bold tracking-tight text-slate-950 block">
+            <span className="text-lg font-bold tracking-tight text-slate-900 block">
               Micro Moulds & Tools
             </span>
-            <span className="text-[11px] text-slate-500 font-medium hidden sm:block">
-              Precision Toolroom & EDM
+            <span className="text-xs text-slate-500 font-normal">
+              Precision Toolroom & CNC Spark Erosion • Daman
             </span>
           </div>
         </Link>
 
         {/* Clean, spacious Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => handleNav(link.id)}
-              className="hover:text-slate-950 transition-colors cursor-pointer text-sm"
+              className="hover:text-slate-900 transition-colors cursor-pointer text-sm"
             >
               {link.label}
             </button>
@@ -96,8 +96,8 @@ export default function Navbar() {
             to="/careers"
             className={`transition-colors text-sm ${
               location.pathname === "/careers"
-                ? "text-slate-950 font-semibold"
-                : "hover:text-slate-950"
+                ? "text-slate-900 font-semibold"
+                : "hover:text-slate-900"
             }`}
           >
             Careers
@@ -105,9 +105,9 @@ export default function Navbar() {
 
           <button
             onClick={() => handleNav("contact")}
-            className="ml-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 rounded-md transition-colors cursor-pointer shadow-xs"
+            className="ml-3 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 rounded transition-colors cursor-pointer"
           >
-            Get a Quote
+            Request Quotation
           </button>
         </nav>
 

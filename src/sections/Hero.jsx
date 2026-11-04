@@ -1,112 +1,143 @@
-import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, ExternalLink, Award, MapPin } from "lucide-react";
+import { ArrowRight, ShieldCheck, ExternalLink, MapPin } from "lucide-react";
 import { COMPANY_LINKS } from "../constants/links";
 
 export default function Hero() {
   return (
-    <section id="home" className="py-20 sm:py-28 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200 relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        {/* Verification & Category Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-6"
-        >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-amber-300 text-xs font-semibold tracking-wide uppercase">
-            <Award size={13} className="text-amber-400" />
-            <span>Specialist in Ball Pen Mould</span>
-          </span>
-          <a
-            href={COMPANY_LINKS.indiamart}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-medium hover:bg-emerald-100 transition"
-          >
-            <ShieldCheck size={13} className="text-emerald-600" />
-            <span>IndiaMART Verified Supplier</span>
-            <ExternalLink size={10} className="opacity-70" />
-          </a>
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-mono border border-slate-200">
-            GSTIN: {COMPANY_LINKS.gstin}
-          </span>
-        </motion.div>
+    <section id="home" className="pt-12 pb-16 sm:pt-16 sm:pb-20 bg-white border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Main Editorial Column */}
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">
+              <span>Toolroom & Machine Shop</span>
+              <span className="text-slate-300">•</span>
+              <span>Daman, India</span>
+            </div>
 
-        {/* Hero Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 leading-[1.15] mb-6 max-w-4xl mx-auto"
-        >
-          Precision Injection Moulds for Writing Instruments & Industrial Tooling.
-        </motion.h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-tight mb-5">
+              Precision injection moulds for writing instruments & engineering plastics.
+            </h1>
 
-        {/* Lead Narrative */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-base sm:text-xl text-slate-600 leading-relaxed font-normal mb-10 max-w-3xl mx-auto"
-        >
-          Daman’s trusted manufacturing studio for high-speed multi-cavity ball pen moulds, side-core pullers, automatic unscrewing tooling, and CNC spark erosion (EDM).
-        </motion.p>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-8 max-w-2xl">
+              Specialized in multi-cavity ball pen moulds, side-core puller tooling, automatic unscrewing mechanisms, and contract CNC spark erosion (EDM) in Shakti Industrial Estate, Daman.
+            </p>
 
-        {/* Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-3.5 mb-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition cursor-pointer flex items-center gap-2 shadow-sm"
-          >
-            <span>Request a Quotation / RFQ</span>
-            <ArrowRight size={15} />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-6 py-3.5 text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg transition cursor-pointer shadow-2xs"
-          >
-            Explore Capabilities
-          </motion.button>
-        </motion.div>
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="px-6 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded transition cursor-pointer flex items-center gap-2"
+              >
+                <span>Request a Quotation</span>
+                <ArrowRight size={15} />
+              </button>
 
-        {/* Location Tag */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="inline-flex items-center gap-2 text-xs text-slate-500 font-normal pb-4"
-        >
-          <MapPin size={14} className="text-slate-700 shrink-0" />
-          <span>{COMPANY_LINKS.address}</span>
-        </motion.div>
+              <button
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                className="px-5 py-3 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 rounded transition cursor-pointer"
+              >
+                View Capabilities
+              </button>
+            </div>
 
-        {/* Fact Strip */}
-        <div className="mt-12 pt-8 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: "25+ Yrs", label: "Toolmaking experience in Daman" },
-            { value: "±0.005 mm", label: "Sub-micron repeatability" },
-            { value: "Up to 64", label: "Mould cavitation capability" },
-            { value: "GST Verified", label: "Registered Indian enterprise" },
-          ].map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.08 * idx + 0.3 }}
-            >
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-950">{item.value}</div>
-              <div className="text-xs text-slate-500 mt-1 font-medium">{item.label}</div>
-            </motion.div>
-          ))}
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <MapPin size={14} className="text-slate-400 shrink-0" />
+              <span>Gala No. A8, Shakti Industrial Estate, Ringanwada, Daman – 396210</span>
+            </div>
+          </div>
+
+          {/* Structured Company Credentials & Summary Card */}
+          <div className="lg:col-span-5 bg-slate-50/70 rounded-xl border border-slate-200/90 p-6 sm:p-7">
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-slate-400 mb-5">
+              Enterprise Summary & Credentials
+            </h2>
+
+            <dl className="divide-y divide-slate-200/70 text-xs">
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">Specialization</dt>
+                <dd className="font-semibold text-slate-900 text-right">
+                  Ball Pen Moulds & Spark Erosion
+                </dd>
+              </div>
+
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">Leadership</dt>
+                <dd className="font-medium text-slate-800 text-right">
+                  Mr. Biju Nair (25+ Yrs)
+                </dd>
+              </div>
+
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">Registered GSTIN</dt>
+                <dd className="font-mono text-slate-800 text-right">
+                  {COMPANY_LINKS.gstin}
+                </dd>
+              </div>
+
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">Cavitation Range</dt>
+                <dd className="font-medium text-slate-800 text-right">
+                  8 to 64 Cavities
+                </dd>
+              </div>
+
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">Mould Steels</dt>
+                <dd className="font-medium text-slate-800 text-right">
+                  Stavax ESR, AISI H13, 2316, P20
+                </dd>
+              </div>
+
+              <div className="py-3 flex justify-between items-baseline gap-4">
+                <dt className="text-slate-500 font-normal">EDM Finish</dt>
+                <dd className="font-medium text-slate-800 text-right">
+                  Sub-micron (down to VDI 12)
+                </dd>
+              </div>
+            </dl>
+
+            <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs">
+              <a
+                href={COMPANY_LINKS.indiamart}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-slate-700 hover:text-slate-950 font-medium transition-colors"
+              >
+                <ShieldCheck size={14} className="text-emerald-700" />
+                <span>IndiaMART Profile</span>
+                <ExternalLink size={10} className="text-slate-400" />
+              </a>
+
+              <a
+                href={COMPANY_LINKS.tradeindia}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-slate-600 hover:text-slate-900 font-medium transition-colors"
+              >
+                <span>TradeIndia</span>
+                <ExternalLink size={10} className="text-slate-400" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Fact Band */}
+        <div className="mt-12 pt-8 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div>
+            <div className="text-2xl font-bold text-slate-900">25+ Years</div>
+            <div className="text-xs text-slate-500 mt-0.5">Toolmaking experience in Daman</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-slate-900">GST Verified</div>
+            <div className="text-xs text-slate-500 mt-0.5">Registered Indian enterprise</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-slate-900">MSME Registered</div>
+            <div className="text-xs text-slate-500 mt-0.5">Government recognized unit</div>
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-slate-900">50+ Clients</div>
+            <div className="text-xs text-slate-500 mt-0.5">Active plastics & stationery manufacturers</div>
+          </div>
         </div>
       </div>
     </section>

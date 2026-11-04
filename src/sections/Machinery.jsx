@@ -1,23 +1,35 @@
 import { motion } from "framer-motion";
-import { Zap, Disc, Wrench, Microscope, Gauge, Cpu } from "lucide-react";
+import { Zap, Disc, Wrench, Microscope, Sparkles, Cpu } from "lucide-react";
 
 export default function Machinery() {
   const machineryList = [
     {
-      category: "Electrical Discharge Machining (EDM)",
+      category: "Sparking & Electrical Discharge Machining (EDM)",
       icon: Zap,
       items: [
         {
-          name: "CNC Sinker EDM Machines",
-          quantity: "2 Units",
-          specifications: "Z-axis DRO, 50A generator, precision copper/graphite erosion down to ±0.003mm",
-          application: "Burning intricate cavity geometries, deep pen ribs, and grip patterns",
+          name: "Sparking EDM Machines (Spark Erosion)",
+          quantity: "3 Units",
+          specifications: "Z-axis DRO, fine generator controls, precision copper & graphite spark erosion",
+          application: "Burning complex mould cavities, pen grip ribs, fine texturing, and blind details",
+        },
+      ],
+    },
+    {
+      category: "Precision Drilling & Micro Hole Machining",
+      icon: Microscope,
+      items: [
+        {
+          name: "Micro Needle Drilling Machine",
+          quantity: "1 Unit",
+          specifications: "Ultra-fine high-speed spindle with micro infeed for small-diameter hole drilling",
+          application: "Precision micro pen tip channels, vent hole drilling, and small orifice machining",
         },
         {
-          name: "Conventional Spark Erosion EDM",
+          name: "Toolroom Drill Machine",
           quantity: "1 Unit",
-          specifications: "High-stability dielectric tank, micro-step servo feed",
-          application: "Narrow slots, blind keyways, and roughing operations",
+          specifications: "Multi-speed rigid spindle with precision depth stop and tapping capacity",
+          application: "Waterline cooling circuits, guide pin bolting, bolster plate drilling, and tapping",
         },
       ],
     },
@@ -26,65 +38,35 @@ export default function Machinery() {
       icon: Disc,
       items: [
         {
-          name: "High-Precision Toolroom Lathes",
-          quantity: "2 Units",
-          specifications: "Hardened bed, chuck runout < 0.005mm, metric/inch threading",
-          application: "Pen barrel core pin turning, guide bush manufacturing, and sleeve machining",
-        },
-        {
-          name: "Heavy-Duty All-Geared Lathe",
+          name: "Precision Lathe Machine",
           quantity: "1 Unit",
-          specifications: "Large swing over bed, high torque for roughing bolster plates",
-          application: "Mould base preparation and bolster block squaring",
+          specifications: "Heavy toolroom lathe with hardened bed, precision 3/4-jaw chucks, and metric/inch threading",
+          application: "Pen barrel core pin turning, guide bush fabrication, cavity sleeve sizing, and bolster work",
         },
       ],
     },
     {
-      category: "Surface & Cylindrical Grinding",
+      category: "Surface Grinding & Polishing Setup",
       icon: Wrench,
       items: [
         {
-          name: "Precision Hydraulic Surface Grinders",
+          name: "Precision Surface Grinding Machines",
           quantity: "2 Units",
-          specifications: "Magnetic chuck (450 x 200 mm), digital readout, flatness < 0.003mm",
-          application: "Parting line leveling, core plate grinding, and ejector plate finishing",
+          specifications: "Magnetic chucks with micro infeed and digital readouts for tight parallelism",
+          application: "Parting line leveling, core plate sizing, ejector block grinding, and flatness maintenance",
         },
         {
-          name: "Precision Micro-Cylindrical Grinder",
+          name: "Toolroom Polishing Machine",
           quantity: "1 Unit",
-          specifications: "High concentricity collet chuck, micro-infeed for round pins",
-          application: "Core pin OD grinding, runner nozzle tips, and ejector pin sizing",
-        },
-      ],
-    },
-    {
-      category: "Milling, Drilling & Quality Inspection",
-      icon: Microscope,
-      items: [
-        {
-          name: "Turret Milling Machines",
-          quantity: "2 Units",
-          specifications: "Variable speed head, 3-Axis DRO, power feeds",
-          application: "Waterline drilling, pocketing, guide pillar boring, and cavity roughing",
-        },
-        {
-          name: "Precision Radial / Bench Drill Machines",
-          quantity: "2 Units",
-          specifications: "Multi-spindle speeds, rigid tapping attachment",
-          application: "Cooling line deep-hole drilling, bolting, and eye-bolt tapping",
-        },
-        {
-          name: "Metrology & Optical Inspection Instruments",
-          quantity: "1 Setup",
-          specifications: "Digital height master, Mitutoyo micrometers, optical profile projector, Rockwell hardness tester",
-          application: "100% dimensional verification, hardness testing, and blue-matching",
+          specifications: "Variable speed buffing/lapping spindle with fine diamond compound finishing",
+          application: "High-gloss mirror polishing on pen cavity inserts, parting lines, and sliding cores",
         },
       ],
     },
   ];
 
-  // Total machines count summary
-  const totalMachinesCount = 13; // 3 EDM + 3 Lathe + 3 Grinding + 4 Milling/Drilling/Inspection
+  // Total machines count summary: 3 EDM + 1 Micro Needle Drill + 1 Drill + 1 Lathe + 2 Surface Grinding + 1 Polishing = 9 Machines
+  const totalMachinesCount = 9;
 
   return (
     <section id="machinery" className="py-20 bg-slate-50 border-b border-slate-200">
@@ -99,13 +81,13 @@ export default function Machinery() {
               Toolroom Machinery & Infrastructure
             </h2>
             <p className="text-slate-600 text-sm mt-2 max-w-2xl">
-              Equipped with in-house CNC spark erosion (EDM), precision toolroom lathes, surface grinders, and inspection equipment in our Daman workshop.
+              Our workshop in Shakti Industrial Estate, Daman is equipped with in-house sparking EDM, micro needle drilling, precision turning, surface grinding, and mirror polishing setups.
             </p>
           </div>
 
           <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-lg border border-slate-200 shadow-2xs text-xs font-medium text-slate-700 shrink-0">
             <Cpu size={16} className="text-blue-600" />
-            <span>Over {totalMachinesCount} Specialized Machines On Floor</span>
+            <span>{totalMachinesCount} Specialized Machines On Floor</span>
           </div>
         </div>
 
@@ -159,14 +141,6 @@ export default function Machinery() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Bottom Note */}
-              <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
-                <span>In-House Calibration Maintained</span>
-                <span className="text-emerald-600 font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Production Ready
-                </span>
               </div>
             </motion.div>
           ))}

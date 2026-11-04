@@ -153,10 +153,10 @@ export default function Contact() {
                       <MapPin size={22} />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-slate-800">
+                      <p className="text-sm font-semibold text-slate-850">
                         Shakti Industrial Estate, Ringanwada, Daman
                       </p>
-                      <p className="text-xs text-slate-600 mt-0.5">
+                      <p className="text-xs text-slate-700 mt-0.5">
                         Click below to load the interactive Google Map
                       </p>
                     </div>
@@ -191,7 +191,7 @@ export default function Contact() {
               <h3 className="text-lg font-semibold text-slate-900">
                 Submit an RFQ / Inquiry
               </h3>
-              <span className="text-xs text-slate-600 font-mono">Response in &le; 24h</span>
+              <span className="text-xs text-slate-700 font-mono font-medium">Response in &le; 24h</span>
             </div>
             <p className="text-slate-600 text-xs mb-6 font-normal">
               Provide your details, component type, target cavities, or required breakdown maintenance.

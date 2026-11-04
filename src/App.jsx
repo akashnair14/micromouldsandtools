@@ -1,37 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Services from "./sections/Services";
-import Machinery from "./sections/Machinery";
-import Gallery from "./sections/Gallery";
-import WorksPage from "./sections/WorksPage";
-import Testimonials from "./sections/Testimonials";
-import Team from "./sections/Team";
-import FAQ from "./sections/FAQ";
-import Contact from "./sections/Contact";
-import Careers from "./sections/Careers";
-
-// Automatically scrolls to top on route change (/works, /careers) unless a hash anchor is targeted
-function ScrollToTop() {
-  const { pathname, hash } = useLocation();
-
-  useEffect(() => {
-    if (!hash) {
-      window.scrollTo(0, 0);
-    } else {
-      const id = hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 50);
-      }
-    }
-  }, [pathname, hash]);
-
-  return null;
-}
+import ScrollToTop from "./components/ScrollToTop";
+import HomePage from "./pages/HomePage";
+import WorksPage from "./pages/WorksPage";
+import CareersPage from "./pages/CareersPage";
 
 export default function App() {
   return (
@@ -40,38 +13,11 @@ export default function App() {
       <div className="min-h-screen bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
         <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <main>
-                <Hero />
-                <About />
-                <Services />
-                <Machinery />
-                <Gallery />
-                <Testimonials />
-                <Team />
-                <FAQ />
-                <Contact />
-              </main>
-            }
-          />
-          <Route
-            path="/works"
-            element={
-              <main>
-                <WorksPage />
-              </main>
-            }
-          />
-          <Route
-            path="/careers"
-            element={
-              <main>
-                <Careers />
-              </main>
-            }
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/works" element={<WorksPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          {/* Catch-all redirect/fallback route */}
+          <Route path="*" element={<HomePage />} />
         </Routes>
         <Footer />
       </div>

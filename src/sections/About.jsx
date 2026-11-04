@@ -24,12 +24,12 @@ export default function About() {
                 <div className="text-[10px] text-slate-500 mt-0.5">Specialist in Ball Pen Mould</div>
               </div>
               <p>Registered and verified on major national B2B industrial trade networks:</p>
-              <div className="flex flex-col gap-2 pt-1">
+              <div className="flex flex-col gap-1.5 pt-1">
                 <a
                   href={COMPANY_LINKS.indiamart}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 py-1 text-emerald-800 hover:text-emerald-950 font-medium"
+                  className="inline-flex items-center gap-1.5 py-2 px-1 text-emerald-800 hover:text-emerald-950 font-medium"
                 >
                   <span>&bull; View Profile on IndiaMART</span>
                   <ExternalLink size={12} />
@@ -38,7 +38,7 @@ export default function About() {
                   href={COMPANY_LINKS.tradeindia}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 py-1 text-blue-800 hover:text-blue-950 font-medium"
+                  className="inline-flex items-center gap-1.5 py-2 px-1 text-blue-800 hover:text-blue-950 font-medium"
                 >
                   <span>&bull; View Profile on TradeIndia</span>
                   <ExternalLink size={12} />
@@ -47,7 +47,7 @@ export default function About() {
                   href={COMPANY_LINKS.justdial}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 py-1 text-amber-800 hover:text-amber-950 font-medium"
+                  className="inline-flex items-center gap-1.5 py-2 px-1 text-slate-800 hover:text-slate-950 font-medium"
                 >
                   <span>&bull; View Profile on Justdial Daman</span>
                   <ExternalLink size={12} />

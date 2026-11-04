@@ -66,7 +66,7 @@ export default function Footer() {
                 href={COMPANY_LINKS.justdial}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-amber-300 border border-slate-700 hover:bg-slate-700 hover:text-amber-200 font-medium transition"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white font-medium transition"
                 title="Open Micro Moulds & Tools profile on Justdial"
               >
                 <span>Justdial Listing</span>
@@ -126,13 +126,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-slate-800 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="pt-6 border-t border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p>&copy; {new Date().getFullYear()} Micro Moulds & Tools. All rights reserved.</p>
           <a
             href="https://maps.google.com/?q=Micro+Moulds+and+Tools+Daman"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-slate-300 flex items-center gap-1 transition"
+            className="hover:text-white flex items-center gap-1 transition text-slate-300"
           >
             <span>Shakti Industrial Estate, Ringanwada, Daman</span>
             <ExternalLink size={10} />
