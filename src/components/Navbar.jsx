@@ -79,19 +79,19 @@ export default function Navbar() {
 
           <button
             onClick={() => handleNav("contact")}
-            className="ml-1 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
+            className="ml-1 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 rounded-md transition-colors cursor-pointer"
           >
             Get a Quote
           </button>
         </nav>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button (44x44px ergonomic touch target) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation"
-          className="md:hidden p-2 text-slate-600 hover:text-slate-900"
+          className="md:hidden w-11 h-11 flex items-center justify-center text-slate-700 hover:text-slate-900 active:bg-slate-100 rounded-lg cursor-pointer transition-colors"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
             <button
               key={link.id}
               onClick={() => handleNav(link.id)}
-              className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
+              className="block w-full text-left py-2.5 text-sm font-medium text-slate-700 hover:text-slate-900"
             >
               {link.label}
             </button>
@@ -110,21 +110,21 @@ export default function Navbar() {
           <Link
             to="/works"
             onClick={() => setIsOpen(false)}
-            className="block w-full text-left py-2 text-sm font-semibold text-blue-600 hover:text-blue-700"
+            className="block w-full text-left py-2.5 text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
             All Works Showcase &rarr;
           </Link>
           <Link
             to="/careers"
             onClick={() => setIsOpen(false)}
-            className="block w-full text-left py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
+            className="block w-full text-left py-2.5 text-sm font-medium text-slate-700 hover:text-slate-900"
           >
             Careers
           </Link>
           <div className="pt-2">
             <button
               onClick={() => handleNav("contact")}
-              className="w-full py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 rounded-md"
+              className="w-full py-3 text-center text-xs font-semibold uppercase tracking-wider text-white bg-slate-900 rounded-md"
             >
               Get a Quote
             </button>
