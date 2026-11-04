@@ -89,14 +89,14 @@ export default function Testimonials() {
             <button
               onClick={prev}
               aria-label="Previous testimonial"
-              className="p-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition cursor-pointer"
+              className="p-3 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={next}
               aria-label="Next testimonial"
-              className="p-2.5 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition cursor-pointer"
+              className="p-3 rounded-full border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 transition cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               <ChevronRight size={18} />
             </button>
@@ -125,7 +125,7 @@ export default function Testimonials() {
                 {[...Array(active.rating)].map((_, i) => (
                   <Star key={i} size={16} fill="currentColor" />
                 ))}
-                <span className="ml-2 text-xs font-medium text-slate-500">
+                <span className="ml-2 text-xs font-medium text-slate-600">
                   Project: {active.project}
                 </span>
               </div>
@@ -139,20 +139,20 @@ export default function Testimonials() {
               <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">{active.author}</h3>
-                  <p className="text-xs text-slate-500">
-                    {active.title} • <span className="text-slate-700 font-medium">{active.company}</span>
+                  <p className="text-xs text-slate-600">
+                    {active.title} • <span className="text-slate-800 font-medium">{active.company}</span>
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                  <Building2 size={14} className="text-slate-400" />
+                <div className="flex items-center gap-1.5 text-xs text-slate-600">
+                  <Building2 size={14} className="text-slate-500" />
                   <span>{active.location}</span>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Dots Indicator */}
-          <div className="flex items-center gap-2 mt-8 pt-4 border-t border-slate-100">
+          {/* Dots Indicator with accessible touch target sizing */}
+          <div className="flex items-center gap-3 mt-8 pt-4 border-t border-slate-100">
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
@@ -161,10 +161,14 @@ export default function Testimonials() {
                   setCurrent(idx);
                 }}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-2 rounded-full transition-all cursor-pointer ${
-                  current === idx ? "w-8 bg-slate-900" : "w-2 bg-slate-200 hover:bg-slate-400"
-                }`}
-              />
+                className="py-3 px-1.5 cursor-pointer flex items-center justify-center"
+              >
+                <span
+                  className={`h-2 rounded-full transition-all block ${
+                    current === idx ? "w-8 bg-slate-900" : "w-2 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

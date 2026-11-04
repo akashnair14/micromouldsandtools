@@ -37,23 +37,23 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="max-w-2xl mb-12">
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            <span className="text-xs font-semibold uppercase tracking-widest text-slate-600">
               Contact & Inquiries
             </span>
-            <span className="text-slate-300">•</span>
+            <span className="text-slate-400">•</span>
             <a
               href={COMPANY_LINKS.indiamart}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 hover:bg-emerald-100 flex items-center gap-1 transition"
+              className="text-xs font-medium text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-300 hover:bg-emerald-100 flex items-center gap-1 transition"
             >
-              <ShieldCheck size={12} /> IndiaMART Profile <ExternalLink size={10} />
+              <ShieldCheck size={12} className="text-emerald-700" /> IndiaMART Profile <ExternalLink size={10} />
             </a>
             <a
               href={COMPANY_LINKS.tradeindia}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 hover:bg-blue-100 flex items-center gap-1 transition"
+              className="text-xs font-medium text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-300 hover:bg-blue-100 flex items-center gap-1 transition"
             >
               TradeIndia Profile <ExternalLink size={10} />
             </a>
@@ -61,7 +61,7 @@ export default function Contact() {
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
             Get in Touch & Request Quotation
           </h2>
-          <p className="text-slate-600 text-sm mt-2">
+          <p className="text-slate-700 text-sm mt-2">
             Send us component drawing files (CAD / 3D STEP), mould specifications, or visit our facility in Daman.
           </p>
         </div>
@@ -74,36 +74,36 @@ export default function Contact() {
                 Tool Room & Registered Address
               </h3>
 
-              <div className="flex items-start gap-3 text-sm text-slate-600">
+              <div className="flex items-start gap-3 text-sm text-slate-700">
                 <MapPin size={18} className="text-slate-900 shrink-0 mt-0.5" />
                 <div className="leading-relaxed">
-                  <strong className="text-slate-900 font-medium block">Micro Moulds & Tools</strong>
+                  <strong className="text-slate-900 font-semibold block">Micro Moulds & Tools</strong>
                   <span>Gala No. A8, Survey No. 13/11, Shakti Industrial Estate, Ringanwada, Varkund, Nani Daman, Dadra & Nagar Haveli and Daman & Diu – 396210, India</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-sm text-slate-600">
+              <div className="flex items-center gap-3 text-sm text-slate-700">
                 <Phone size={18} className="text-slate-900 shrink-0" />
                 <div>
                   <a href={`tel:${COMPANY_LINKS.phone}`} className="hover:text-slate-900 font-medium">
                     +91 9377004215
                   </a>
-                  <span className="text-xs text-slate-400 block">Direct Line: Mr. Biju Nair</span>
+                  <span className="text-xs text-slate-600 block">Direct Line: Mr. Biju Nair</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-sm text-slate-600">
+              <div className="flex items-center gap-3 text-sm text-slate-700">
                 <Mail size={18} className="text-slate-900 shrink-0" />
                 <div>
                   <a href={`mailto:${COMPANY_LINKS.email}`} className="hover:text-slate-900 font-medium">
                     {COMPANY_LINKS.email}
                   </a>
-                  <span className="text-xs text-slate-400 block">Official RFQ Mailbox</span>
+                  <span className="text-xs text-slate-600 block">Official RFQ Mailbox</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-t border-slate-200">
-                <Clock size={16} className="text-slate-400 shrink-0" />
+              <div className="flex items-center gap-3 text-xs text-slate-600 pt-2 border-t border-slate-200">
+                <Clock size={16} className="text-slate-700 shrink-0" />
                 <span>Monday – Saturday: 8:30 AM – 8:00 PM (IST)</span>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function Contact() {
                       <p className="text-sm font-semibold text-slate-800">
                         Shakti Industrial Estate, Ringanwada, Daman
                       </p>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-slate-600 mt-0.5">
                         Click below to load the interactive Google Map
                       </p>
                     </div>
@@ -145,12 +145,12 @@ export default function Contact() {
                 )}
               </div>
               <div className="p-3 bg-white border-t border-slate-200 flex items-center justify-between text-xs">
-                <span className="text-slate-600 font-medium">Shakti Industrial Estate, Ringanwada</span>
+                <span className="text-slate-700 font-medium">Shakti Industrial Estate, Ringanwada</span>
                 <a
                   href="https://maps.google.com/?q=Micro+Moulds+and+Tools+Daman"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-medium"
+                  className="inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 font-medium"
                 >
                   <span>Open in Google Maps</span>
                   <ExternalLink size={12} />
@@ -159,15 +159,15 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form with explicit accessible labels matching htmlFor and id */}
+          {/* Form */}
           <div className="lg:col-span-7 bg-white p-7 sm:p-8 rounded-lg border border-slate-200 shadow-xs">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-lg font-semibold text-slate-900">
                 Submit an RFQ / Inquiry
               </h3>
-              <span className="text-xs text-slate-400 font-mono">Response in &le; 24h</span>
+              <span className="text-xs text-slate-600 font-mono">Response in &le; 24h</span>
             </div>
-            <p className="text-slate-500 text-xs mb-6 font-normal">
+            <p className="text-slate-600 text-xs mb-6 font-normal">
               Provide your details, component type, target cavities, or required breakdown maintenance.
             </p>
 
@@ -230,7 +230,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                aria-label="Submit Request for Quotation"
+                aria-label="Submit RFQ to Toolroom"
                 disabled={status.state === "submitting"}
                 className="w-full py-2.5 px-4 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
               >

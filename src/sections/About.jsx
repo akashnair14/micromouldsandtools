@@ -7,52 +7,52 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-2">
               About Our Company
             </p>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 leading-snug">
               Focused on accuracy, longevity, and reliable lead times.
             </h2>
 
-            <div className="mt-6 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-3 text-xs text-slate-600">
+            <div className="mt-6 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-3 text-xs text-slate-700">
               <div className="flex items-center gap-2 font-medium text-slate-900">
-                <ShieldCheck size={16} className="text-emerald-600" />
+                <ShieldCheck size={16} className="text-emerald-700" />
                 <span>Verified Toolroom Supplier</span>
               </div>
               <p>Registered and verified on major national B2B industrial trade networks:</p>
-              <div className="flex flex-col gap-1.5 pt-1">
+              <div className="flex flex-col gap-2 pt-1">
                 <a
                   href={COMPANY_LINKS.indiamart}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-900 font-medium"
+                  className="inline-flex items-center gap-1.5 py-1 text-emerald-800 hover:text-emerald-950 font-medium"
                 >
                   <span>&bull; View Profile on IndiaMART</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={12} />
                 </a>
                 <a
                   href={COMPANY_LINKS.tradeindia}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-blue-700 hover:text-blue-900 font-medium"
+                  className="inline-flex items-center gap-1.5 py-1 text-blue-800 hover:text-blue-950 font-medium"
                 >
                   <span>&bull; View Profile on TradeIndia</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={12} />
                 </a>
                 <a
                   href={COMPANY_LINKS.justdial}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-amber-700 hover:text-amber-900 font-medium"
+                  className="inline-flex items-center gap-1.5 py-1 text-amber-800 hover:text-amber-950 font-medium"
                 >
                   <span>&bull; View Profile on Justdial Daman</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={12} />
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-5 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+          <div className="md:col-span-8 space-y-5 text-slate-700 text-sm sm:text-base leading-relaxed font-normal">
             <p>
               Founded and directed by master toolmaker <strong className="text-slate-900 font-semibold">Mr. Biju Nair</strong>, Micro Moulds & Tools has been a trusted supplier to the Indian writing instrument and plastics industry from Shakti Industrial Estate, Daman.
             </p>
@@ -66,19 +66,19 @@ export default function About() {
             <div className="grid sm:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 mb-1">High-Grade Steels</h3>
-                <p className="text-xs text-slate-500 leading-normal">
+                <p className="text-xs text-slate-600 leading-normal">
                   Hardened AISI H13, Stavax ESR, and 2316 for extreme polish and corrosion resistance.
                 </p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 mb-1">Side-Core & Unscrewing</h3>
-                <p className="text-xs text-slate-500 leading-normal">
+                <p className="text-xs text-slate-600 leading-normal">
                   Expertise in complex threaded geometries, collapsible cores, and side-lifters.
                 </p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-slate-900 mb-1">Job Work & Maintenance</h3>
-                <p className="text-xs text-slate-500 leading-normal">
+                <p className="text-xs text-slate-600 leading-normal">
                   Dedicated CNC spark erosion (EDM) job work and 24-48h parting-line repair.
                 </p>
               </div>
